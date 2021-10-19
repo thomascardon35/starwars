@@ -37,7 +37,6 @@ const getBigData = async () => {
         })
 
         const getSearch = (search) => {
-            let d = 'Sand Crawler'
             // let res = superMegaData.filter(el => el.name.toLowerCase() == search.toLowerCase());
             let res = superMegaData.filter(el => el.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
             afficher(res)
