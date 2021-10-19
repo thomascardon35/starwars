@@ -5,13 +5,46 @@ const espèce = document.getElementById("data_three");
 
 const API_URL = "https://swapi.dev/api/films/";
 
-const getData = (API_URL) => {
-    fetch(API_URL).then(resp => {
-        return resp.json()
-    }).then(dataFilms => {
-        console.log(dataFilms)
+async function getData(){
+    const resp = await fetch(API_URL);
+    const dataFilms = await resp.json();
 
-        for(let index = 0; index < dataFilms.count; index++){
+
+    for(let index = 0; index < dataFilms.count; index++){
+
+            
+     // VAISSEAUX       
+            
+            let starship = [...dataFilms.results[index].starships];   
+                let war = [];
+            
+                for(let i = 0; i < starship.length ; i++){
+             
+             const vaisseau = fetch(starship[i]).then(resp => resp.json());
+             war.push(vaisseau);
+             
+            }
+            let star = (await Promise.all(war)).map(v => v.name);
+
+     // ESPECES       
+            
+            let spacies = [...dataFilms.results[index].species];
+
+            let people = [];
+
+            for(let i = 0; i < spacies.length ; i++){
+                
+                const human = fetch(spacies[i]).then(resp => resp.json());
+                people.push(human);
+            }
+
+            let wookie = (await Promise.all(people)).map(v => v.name);
+
+            
+
+           
+         
+         
 
         megaBox.innerHTML +=`
 
@@ -26,17 +59,20 @@ const getData = (API_URL) => {
             <p>Année de sortie : ${dataFilms.results[index].release_date}</p>
             </div>
             <div class="data_second" id="data_second">
-            <p>Vaisseaux :</p>
+            <p>Vaisseaux : ${star} </p>
             </div>
             <div class="data_three" id="data_three">
+            <p> Espèces : ${wookie}</p>
 
             </div>
 
 
         </div>
         `
-        }
-    })
+        
+    }
+    
+
 }
 getData(API_URL);
 
