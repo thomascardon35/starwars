@@ -51,9 +51,9 @@ const getBigData = async () => {
             if(data.length != 0) {
                 for(let i = 0; i < data.length; i++){
                     MEGABOX.innerHTML += `
-                    <div class="box">
+                    <div class="box" id="box">
                         <h2 id="${i}" class="title">${data[i].name}</h2>
-                        <div class="data_base">
+                        <div class="data_base_vehicles">
                             <ul>
                                 <li>model:${data[i].model }</li>
                                 <li>manufacturer: ${data[i].manufacturer}</li>
@@ -87,14 +87,15 @@ const getBigData = async () => {
                 MEGABOX.innerHTML = '<div>Refaire une recherche</div>'
                 
             }
-            }
+        }
         
         
         afficher(superMegaData)
 
         let TITLE = document.querySelectorAll('h2');
-
+            console.log(TITLE)
         for (let i = 0; i < TITLE.length; i++) {
+            
             TITLE[i].addEventListener("click", function() {
                 let res = this.nextElementSibling
                 res.classList.toggle("active")

@@ -9,7 +9,7 @@ header {
 {
     display : flex;
     flex-wrap: wrap;
-        justify-content: center;
+    justify-content: center;
 
 }
 
@@ -32,3 +32,23 @@ div img {
     align-self: center;
     border-radius: 22px;
     margin: 10px;}
+
+
+/* Section Vehicles */
+
+.vehiSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    cursor: pointer;
+}
+
+.data_base_vehicles {
+    display: none;
+}
+
+.active{
+    display: block;
+}
