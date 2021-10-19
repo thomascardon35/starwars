@@ -37,51 +37,60 @@ const getBigData = async () => {
         })
 
         const getSearch = (search) => {
-            let res = superMegaData.filter(e => e.name == search)
+            // let res = superMegaData.filter(el => el.name.toLowerCase() == search.toLowerCase());
+            let res = superMegaData.filter(el => el.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+            afficher(res)
             console.log(res)
         }
         
         
 
-        const afficher = () => {
-            // console.log('aff', superMegaData)
-            for(let i = 0; i < superMegaData.length; i++){
-                MEGABOX.innerHTML += `
-                <div class="box">
-                    <h2 id="${i}" class="title">${superMegaData[i].name}</h2>
-                    <div class="data_base">
-                        <ul>
-                            <li>model:${superMegaData[i].model }</li>
-                            <li>manufacturer: ${superMegaData[i].manufacturer}</li>
-                            <li>cost in credits: ${superMegaData[i].cost_in_credits}</li>
-                            <li>length: ${superMegaData[i].length}</li>
-                            <li>max atmosphering speed: ${superMegaData[i].max_atmosphering_speed}</li>
-                            <li>crew: ${superMegaData[i].crew}</li>
-                            <li>passengers: ${superMegaData[i].passengers}</li>
-                            <li>cargo capacity ${superMegaData[i].cargo_capacity}</li>
-                            <li>consumables: ${superMegaData[i].consumables}</li>
-                            <li>vehicles class: ${superMegaData[i].vehicle_class}</li>
-                        </ul>
-                        <div class="data_second" id="data_second">
-                            <h3>Films</h3>
+        const afficher = (data) => {
+            console.log('aff', data)
+            MEGABOX.innerHTML = '';
+            if(data.length != 0) {
+                for(let i = 0; i < data.length; i++){
+                    MEGABOX.innerHTML += `
+                    <div class="box">
+                        <h2 id="${i}" class="title">${data[i].name}</h2>
+                        <div class="data_base">
                             <ul>
-                                ${superMegaData[i].films.map(f => `<li>${f}</li>`)}
+                                <li>model:${data[i].model }</li>
+                                <li>manufacturer: ${data[i].manufacturer}</li>
+                                <li>cost in credits: ${data[i].cost_in_credits}</li>
+                                <li>length: ${data[i].length}</li>
+                                <li>max atmosphering speed: ${data[i].max_atmosphering_speed}</li>
+                                <li>crew: ${data[i].crew}</li>
+                                <li>passengers: ${data[i].passengers}</li>
+                                <li>cargo capacity ${data[i].cargo_capacity}</li>
+                                <li>consumables: ${data[i].consumables}</li>
+                                <li>vehicles class: ${data[i].vehicle_class}</li>
                             </ul>
+                            <div class="data_second" id="data_second">
+                                <h3>Films</h3>
+                                <ul>
+                                    ${data[i].films.map(f => `<li>${f}</li>`)}
+                                </ul>
+                            </div>
+                            <div class="data_three" id="data_three">
+                                <h3>Pilots</h3>
+                                <ul>
+                                    ${data[i].pilots.length != 0 ? data[i].pilots : 'Pas de Pilotes'}
+                                </ul>
+                            </div> 
                         </div>
-                        <div class="data_three" id="data_three">
-                            <h3>Pilots</h3>
-                            <ul>
-                                ${superMegaData[i].pilots.length != 0 ? superMegaData[i].pilots : 'Pas de Pilotes'}
-                            </ul>
-                        </div> 
                     </div>
-                </div>
-            `
+                `
+
+            }
+        } else {
+                MEGABOX.innerHTML = '<div>Refaire une recherche</div>'
                 
             }
-        }
+            }
         
-        afficher()
+        
+        afficher(superMegaData)
 
         let TITLE = document.querySelectorAll('h2');
 
