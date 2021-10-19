@@ -103,7 +103,7 @@ async function getData(api){
         BOX.innerHTML += 
         ` 
         <h2>${allDatas[indexx].name}</h2>
-        <div class="data_base"></div>
+        <div></div>
         `;
 
     }
@@ -121,17 +121,26 @@ async function getData(api){
                         getPromisePlanetes(allDatas[index].planete).then(respPlanete=>{
                             DIV.innerHTML = 
                             ` 
-                            <ul>
-                                <li>La taille : ${allDatas[index].height}</li>
-                                <li>Le poids  : ${allDatas[index].mass}</li>
-                                <li>La couleur des cheveux : ${allDatas[index].hair_color}</li>
-                                <li>La couleur de la peau : ${allDatas[index].skin_color}</li>
-                                <li>La couleur des yeux : ${allDatas[index].eye_color}</li>
-                                <li>La date de naissance : ${allDatas[index].birth_year}</li>
-                                <li>Le genre : ${allDatas[index].gender}</li>
-                                <li>Apparition Films : ${resp}</li>
-                                <li>Nom de la Planète de naissance : ${respPlanete}</li>
-                            </ul>
+                            <div class="data_base">
+                                <ul>
+                                    <li>La taille : ${allDatas[index].height}</li>
+                                    <li>Le poids  : ${allDatas[index].mass}</li>
+                                    <li>La couleur des cheveux : ${allDatas[index].hair_color}</li>
+                                    <li>La couleur de la peau : ${allDatas[index].skin_color}</li>
+                                    <li>La couleur des yeux : ${allDatas[index].eye_color}</li>
+                                    <li>La date de naissance : ${allDatas[index].birth_year}</li>
+                                    <li>Le genre : ${allDatas[index].gender}</li>
+                                </ul>
+                            </div>
+                            <div class="data_second">
+                            <h2>Apparition Films</h2>
+                                <p> ${resp} </p>
+                            </div>
+                            <div class="data_three">
+                                <h2>Nom de la Planète de naissance</h2>
+                                <p> ${respPlanete} </p>
+                    
+                            </div>
                             `
                         })
                         
@@ -171,3 +180,10 @@ async function getPromisePlanetes(dataplanetes){
 }
 
 getData(API_URL);
+
+const INPUTSEARCH = document.getElementById('search');
+document.querySelector('.button').addEventListener('click',(event)=>{
+
+    console.log(INPUTSEARCH.value);
+
+})
