@@ -1,0 +1,34 @@
+header {
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+  
+}
+
+#section
+{
+    display : flex;
+    flex-wrap: wrap;
+        justify-content: center;
+
+}
+
+h1, h2 {color:black}
+
+#box, #data_base,
+#data_second,
+ #data_three 
+{
+    background-color: #fea347;
+    border-radius: 22px;
+    margin: 50px;
+    text-align: center;
+   
+}
+
+div img {
+	width: 200px;
+	height: 200px;
+    align-self: center;
+    border-radius: 22px;
+    margin: 10px;}
