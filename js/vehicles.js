@@ -8,6 +8,30 @@ const getData = async () => {
         console.log(resFormat)
 
         for (const vehicle of resFormat.results) {
+            /*
+			 * Récuperer les pilots
+			 */
+			let pilots = [...vehicle.pilots];
+
+			let dataPilots = pilots.map(async (pilot) => {
+				const data = await fetch(pilot);
+				return data.json();
+			});
+
+			const getPilots = (await Promise.all(dataPilots)).map((p) => `<li>${p.name}</li>`);
+			console.log(getPilots);
+
+			/*
+			 * Récuperer les films
+			 */
+			let films = [...vehicle.films];
+			let dataFilms = films.map(async (film) => {
+				const data = await fetch(film);
+				return data.json();
+			});
+
+			const getFilms = (await Promise.all(dataFilms)).map((f) => `<li>${f.title}</li>`);
+
             console.log(vehicle)
             MEGABOX.innerHTML += `
             <div class="box">
@@ -30,6 +54,18 @@ const getData = async () => {
                 </div>
                 <div class="data_three" id="data_three">
                 </div>
+                <div>
+            <h3>Films</h3>
+            <ul>
+              ${getFilms}
+            </ul>
+          </div>
+          <div>
+          <h3>Pilots</h3>
+            <ul>
+            ${getPilots.length != 0 ? getPilots : 'Pas de Pilotes'}
+            </ul>
+          </div>
             </div>
             `
         }   
