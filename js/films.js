@@ -3,6 +3,7 @@ const donnée_base = document.getElementById("data_base");
 const nom_vaisseaux = document.getElementById("data_second");
 const espece = document.getElementById("data_three");
 
+
 const API_URL = "https://swapi.dev/api/films/";
 
 async function getData(){
@@ -45,7 +46,11 @@ async function getData(){
             let wookie = (await Promise.all(people)).map(v => v.name);
 
         // FILMS    
-        const grosData = {...dataFilms.results[index]}
+        const grosData = {...dataFilms.results[index],
+                            "star": star,
+                            "wookie":wookie
+        
+        }
          
            bigData.push(grosData);
            
@@ -82,7 +87,9 @@ async function getData(){
         
         
     }
-    console.log(bigData);
+   
+
+    // ACCORDEON
 
     const LIST_BUTTON = document.querySelectorAll('h2');
        
@@ -93,8 +100,51 @@ async function getData(){
         });
     }
 
+    // BARRE DE RECHERCHE
+    const text = document.getElementById("searchBar");
+    const button = document.getElementById("search");
 
+    button.addEventListener('click' , (e) => {
+        megaBox.innerHTML = "";
+        
+    for(let index = 0; index < bigData.length; index++){
+
+            
+    if(bigData[index].title.toLowerCase().indexOf(text.value.toLowerCase()) != -1){
+               
+                megaBox.innerHTML =`
+
+                <div class="box" id="box">
+                    <h2>${bigData[index].title} Episode n°${bigData[index].episode_id}</h2>
+        
+                    <div class="data_base" id="data_base">
+                    
+                        <p>Résumé : ${bigData[index].opening_crawl}</p>
+                        <p>Réalisateur : ${bigData[index].director}</p>
+                        <p>Producteur : ${bigData[index].producer}</p>
+                        <p>Année de sortie : ${bigData[index].release_date}</p>
+                    
+                    <div class="data_second" id="data_second">
+                        <p>Vaisseaux : ${bigData[index].star} </p>
+                    </div>
+                    <div class="data_three" id="data_three">
+                        <p>Espèces : ${bigData[index].wookie}</p>
+        
+                    </div>
+                    
+                    </div>
+        
+        
+                </div>
+             
+                `
+                
+            }
+        }
+      
+});
 
 }
+
 getData(API_URL);
 
