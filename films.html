@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../starwars/js/films.js"defer></script>
     <title>Films STARS WARS</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/films.js"defer></script>
+
 </head>
 <body>
     <header>
@@ -15,7 +16,13 @@
     </header>
     <div class="container">
         <section >
-            <h1 class="titre">FILMS</h1>
+            <div class="top_section">
+                <h1 class="titre">FILMS</h1>
+                <div class="input">
+                    <input type="text" value="" id="searchBar" placeholder="Recherche films">
+                    <button id="search" class="button"> Search </button>
+                </div>
+            </div>
             <div id="megaBox"></div>
         </section>
     </div>

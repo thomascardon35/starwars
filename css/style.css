@@ -87,7 +87,6 @@ header {
 .data_base {
     margin: 10px;
     text-align: justify;
-
 }
 
 
@@ -100,9 +99,10 @@ header {
 
 .title {
     cursor: pointer;
+    text-align: center;
 }
 
-.data_base_vehicles {
+.data_base_vehicles, .data_base_films {
     display: none;
 }
 

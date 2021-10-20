@@ -1,7 +1,7 @@
 //partie cécile pas finie
 
 
-const NIVEAU0 = document.getElementById('box');
+const NIVEAU0 = document.getElementById('megaBox');
 const NIVEAU1 = document.getElementById('data_base');
 const NIVEAU2 = document.getElementById('data_second');
 const NIVEAU3 = document.getElementById('data_three');
@@ -97,14 +97,16 @@ const getData = () => {
 
 
 
-        NIVEAU1.innerHTML += `
-        Planète <h3> ${data.results[i].name} </h3>
+        NIVEAU0.innerHTML += `
+        <div class="box">
+            <h2 class="title"> ${data.results[i].name} </h2>
+            <div class="data_base">
+                Planète n° ${[i]+1}. Sa journée dure ${data.results[i].rotation_period} heures et son année est de ${data.results[i].orbital_period} jours. Son diamètre est de ${data.results[i].diameter} kilomètres. Son climat est de type "${data.results[i].climate}" et sa gravité est de type "${data.results[i].gravity}". Son terrain est dit "${data.results[i].terrain}", sa surface d'eau est d'environ ${data.results[i].surface_water} km². 
+                On y compte ${data.results[i].population} habitants, répartis en ${NBRESIDENTS} ethnies différentes.
 
-        Planète n° ${[i]+1}. Sa journée dure ${data.results[i].rotation_period} heures et son année est de ${data.results[i].orbital_period} jours. Son diamètre est de ${data.results[i].diameter} kilomètres. Son climat est de type "${data.results[i].climate}" et sa gravité est de type "${data.results[i].gravity}". Son terrain est dit "${data.results[i].terrain}", sa surface d'eau est d'environ ${data.results[i].surface_water} km². 
-        On y compte ${data.results[i].population} habitants, répartis en ${NBRESIDENTS} ethnies différentes.
-
-        (Planète créée le ${data.results[i].created}, éditée le ${data.results[i].edited})
-
+                (Planète créée le ${data.results[i].created}, éditée le ${data.results[i].edited})
+            </div>
+        </div>
       
 
 

@@ -148,7 +148,7 @@ function affichageNoms(tab){
         BOX.innerHTML += 
         `
         <div class="box" id="box">
-            <h2>${tab[indexx].name}</h2>
+            <h2 class="title">${tab[indexx].name}</h2>
             <div></div>
         </div>  
         `;
