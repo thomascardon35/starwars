@@ -1,3 +1,6 @@
+//partie cécile pas finie
+
+
 const NIVEAU0 = document.getElementById('box');
 const NIVEAU1 = document.getElementById('data_base');
 const NIVEAU2 = document.getElementById('data_second');
@@ -33,48 +36,12 @@ const getData = () => {
 
         console.log("nom de toutes les planetes est :" + data.results[i].name +"\n");
 
-        NIVEAU1.innerHTML += `
-        Planète <h3> ${data.results[i].name} </h3>
-
-        Planète n° ${[i]+1}. Sa journée dure ${data.results[i].rotation_period} heures et son année dure ${data.results[i].orbital_period} jours.
-
-        Son diamètre est de ${data.results[i].diameter} miles.
-        Son climat est réputé ${data.results[i].climate}
-        et sa gravité ${data.results[i].gravity}. 
-
-        Son terrain est de type ${data.results[i].terrain}, sa surface d'eau est d'environ ${data.results[i].surface_water} miles carrés. 
-        On y compte ${data.results[i].population} têtes, et là il nous manque les RESIDENTS
-        
-        il manque aussi les FILMS dans lesquels ces planètes apparaissent !
-
-        Planète créée le ${data.results[i].created}, éditée le ${data.results[i].edited}, et  : <a href="
-        ${data.results[i].url} " >son lien </a>.
-
-        ${NBRESIDENTS} ethnies différentes y sont présentes. 
 
 
-
-
-
-        ` 
-        //fin du tic
-
-        //======================PARTIE SUR LES RESIDENTS==================
-        // on a déjà fait ça :  const NBRESIDENTS=data.results[i].residents.length;
+ //les habitants
         for (let i = 0; i== NBRESIDENTS; i++ ){
             console.log("nb residents pour mon for est de " + NBRESIDENTS);
         }
-
-        /* code Paul Emmanuel :
-
-        let starship = [...dataFilms.results[index].starships];
-                let war = [];
-                for(let i = 0; i <= starship.length ; i++){
-                    const vaisseau = fetch(starship[i]).then(resp => resp.json());
-                    war.push(vaisseau);
-                    }
-                    let star = (await Promise.all(war)).map(v => v.name); */
-
         //je crée un tableau "habitants" pour récupérer le listing de "residents"
         let habitants= [...data.results[i].residents];
         console.log ("tableau des habitants= "+ habitants); //ok
@@ -96,11 +63,11 @@ const getData = () => {
         
         // et encore une maudite variable pour ????
         //let inviteMystere = (await Promise.all(machin)).map(onsenfoutdunom => console.log(onsenfoutdunom));
-        console.log(machin)
+        console.log("machin " + machin);
         Promise.all(machin).then(resul => {
-            console.log(resul)
+            console.log("nom resul " +resul)
         });
-//=========================================== la meme chose sur les planetes dans les films =========
+//===================== la meme chose sur les planetes dans les films =========
                   //je crée un tableau "lesFilms" pour récupérer le listing des films 
         let lesFilms= [...data.results[i].films];
         console.log ("tableau des films= "+ lesFilms);
@@ -124,12 +91,34 @@ const getData = () => {
         });  
 
 
-//========================================== fin des planetes dans les films
+
+
+//______________________________CE QU ON VA AFFICHER
+
+
+
+        NIVEAU1.innerHTML += `
+        Planète <h3> ${data.results[i].name} </h3>
+
+        Planète n° ${[i]+1}. Sa journée dure ${data.results[i].rotation_period} heures et son année est de ${data.results[i].orbital_period} jours. Son diamètre est de ${data.results[i].diameter} kilomètres. Son climat est de type "${data.results[i].climate}" et sa gravité est de type "${data.results[i].gravity}". Son terrain est dit "${data.results[i].terrain}", sa surface d'eau est d'environ ${data.results[i].surface_water} km². 
+        On y compte ${data.results[i].population} habitants, répartis en ${NBRESIDENTS} ethnies différentes.
+
+        (Planète créée le ${data.results[i].created}, éditée le ${data.results[i].edited})
+
+      
+
+
+
+
+        ` 
+        //fin du tic
+    }
+
+}).catch(error => {
+    console.error(error)
+})
 }
-    }).catch(error => {
-        console.error(error)
-    })
-}
+
 
 
 getData();
