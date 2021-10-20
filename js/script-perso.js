@@ -1,6 +1,6 @@
 const API_URL = "https://swapi.dev/api/people/?page=";
 
-const BOX = document.getElementById("box");
+const BOX = document.getElementById("megaBox");
 
 let allDatas = [];
 
@@ -146,9 +146,11 @@ async function getPromisePlanetes(dataplanetes){
 function affichageNoms(tab){
     for(let indexx = 0 ; indexx<tab.length ; indexx++){
         BOX.innerHTML += 
-        ` 
-        <h2>${tab[indexx].name}</h2>
-        <div></div>
+        `
+        <div class="box" id="box">
+            <h2>${tab[indexx].name}</h2>
+            <div></div>
+        </div>  
         `;
     }
 }

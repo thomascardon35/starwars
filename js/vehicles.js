@@ -1,5 +1,5 @@
 const API_URL = 'https://swapi.dev/api/vehicles/';
-const MEGABOX = document.getElementById('megabox')
+const MEGABOX = document.getElementById('megaBox')
 const INPUT = document.getElementById('search')
 const BTNSEARCH = document.getElementById('searchBtn')
 
@@ -53,7 +53,8 @@ const getBigData = async () => {
                     MEGABOX.innerHTML += `
                     <div class="box" id="box">
                         <h2 id="${i}" class="title">${data[i].name}</h2>
-                        <div class="data_base_vehicles">
+                        <div class="data_base_vehicles data_base">
+                            <h3>Info</h3>
                             <ul>
                                 <li>model:${data[i].model }</li>
                                 <li>manufacturer: ${data[i].manufacturer}</li>
