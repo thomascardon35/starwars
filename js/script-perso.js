@@ -98,48 +98,21 @@ async function getData(api){
         }
 
     }
+
+    affichageNoms(allDatas);
+
     
-    for(let indexx = 0 ; indexx<allDatas.length ; indexx++){
-        BOX.innerHTML += 
-        ` 
-        <h2>${allDatas[indexx].name}</h2>
-        <div class="data_base"></div>
-        `;
+    // for(let indexx = 0 ; indexx<allDatas.length ; indexx++){
+    //     BOX.innerHTML += 
+    //     ` 
+    //     <h2>${allDatas[indexx].name}</h2>
+    //     <div></div>
+    //     `;
 
-    }
+    // }
 
-    let buttons = document.querySelectorAll('h2');
+    affichageDetails();
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function(e) {
-            const DIV = e.target.nextSibling.nextElementSibling;
-
-            for(let index = 0 ; index < allDatas.length ; index++){
-                if(allDatas[index].name === e.target.innerText){
-                    getPromiseFilms(allDatas[index].films).then(resp =>{
-
-                        getPromisePlanetes(allDatas[index].planete).then(respPlanete=>{
-                            DIV.innerHTML = 
-                            ` 
-                            <ul>
-                                <li>La taille : ${allDatas[index].height}</li>
-                                <li>Le poids  : ${allDatas[index].mass}</li>
-                                <li>La couleur des cheveux : ${allDatas[index].hair_color}</li>
-                                <li>La couleur de la peau : ${allDatas[index].skin_color}</li>
-                                <li>La couleur des yeux : ${allDatas[index].eye_color}</li>
-                                <li>La date de naissance : ${allDatas[index].birth_year}</li>
-                                <li>Le genre : ${allDatas[index].gender}</li>
-                                <li>Apparition Films : ${resp}</li>
-                                <li>Nom de la Planète de naissance : ${respPlanete}</li>
-                            </ul>
-                            `
-                        })
-                        
-                    });
-                }
-            }
-        });
-    }
 }
 
 async function getFilms(dataFilms){
@@ -170,4 +143,83 @@ async function getPromisePlanetes(dataplanetes){
     return Promise.all(dataPlanete);
 }
 
+function affichageNoms(tab){
+    for(let indexx = 0 ; indexx<tab.length ; indexx++){
+        BOX.innerHTML += 
+        ` 
+        <h2>${tab[indexx].name}</h2>
+        <div></div>
+        `;
+    }
+}
+
+function affichageDetails(){
+    let buttons = document.querySelectorAll('h2');
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+            const DIV = e.target.nextSibling.nextElementSibling;
+            
+            for(let index = 0 ; index < allDatas.length ; index++){
+                if(allDatas[index].name === e.target.innerText){
+                    getPromiseFilms(allDatas[index].films).then(resp =>{
+
+                        getPromisePlanetes(allDatas[index].planete).then(respPlanete=>{
+                            DIV.innerHTML = 
+                            ` 
+                            <div class="data_base">
+                                <ul>
+                                    <li>La taille : ${allDatas[index].height}</li>
+                                    <li>Le poids  : ${allDatas[index].mass}</li>
+                                    <li>La couleur des cheveux : ${allDatas[index].hair_color}</li>
+                                    <li>La couleur de la peau : ${allDatas[index].skin_color}</li>
+                                    <li>La couleur des yeux : ${allDatas[index].eye_color}</li>
+                                    <li>La date de naissance : ${allDatas[index].birth_year}</li>
+                                    <li>Le genre : ${allDatas[index].gender}</li>
+                                </ul>
+                            </div>
+                            <div class="data_second">
+                            <h2>Apparition Films</h2>
+                                <p> ${resp.join(" , ")} </p>
+                            </div>
+                            <div class="data_three">
+                                <h2>Nom de la Planète de naissance</h2>
+                                <p> ${respPlanete} </p>
+                    
+                            </div>
+                            `
+                        })
+                        
+                    });
+
+    
+                }
+            }
+        });
+    }
+}
+
 getData(API_URL);
+
+const INPUTSEARCH = document.getElementById('search');
+document.querySelector('.button').addEventListener('click',()=>{
+    let arrayName = [];
+    for(let i = 0; i<allDatas.length;i++){
+
+        if ((allDatas[i].name.toLowerCase()).indexOf(INPUTSEARCH.value.toLowerCase()) != -1){
+            arrayName.push(allDatas[i]);
+        }
+
+    }
+    if(arrayName.length != 0){
+        BOX.innerHTML = "";
+        affichageNoms(arrayName);
+        affichageDetails();
+    }else{
+        window.alert("Aucune réponse trouvée!");
+    }
+    
+    //affichageNoms(arrayName);
+
+
+})
