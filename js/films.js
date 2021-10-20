@@ -63,21 +63,17 @@ async function getData(){
         <div class="box" id="box">
             <h2>${dataFilms.results[index].title} Episode n°${dataFilms.results[index].episode_id}</h2>
 
-            <div class="data_base" id="data_base">
-            
-                <p>Résumé : ${dataFilms.results[index].opening_crawl}</p>
-                <p>Réalisateur : ${dataFilms.results[index].director}</p>
-                <p>Producteur : ${dataFilms.results[index].producer}</p>
-                <p>Année de sortie : ${dataFilms.results[index].release_date}</p>
-            
-            <div class="data_second" id="data_second">
-                <p>Vaisseaux : ${star} </p>
-            </div>
-            <div class="data_three" id="data_three">
-                <p> Espèces : ${wookie}</p>
-
-            </div>
-            
+            <div class="data_base films" id="data_base">
+                <p><b>Résumé</b> : ${dataFilms.results[index].opening_crawl}</p>
+                <p><b>Réalisateur</b> : ${dataFilms.results[index].director}</p>
+                <p><b>Producteur</b> : ${dataFilms.results[index].producer}</p>
+                <p><b>Année de sortie</b>: ${dataFilms.results[index].release_date}</p>
+                <div class="data_second" id="data_second">
+                    <p><b>Vaisseaux</b> : ${star} </p>
+                </div>
+                <div class="data_three" id="data_three">
+                    <p> <b>Espèces</b> : ${wookie}</p>
+                </div>
             </div>
 
 

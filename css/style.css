@@ -12,7 +12,9 @@ header {
     margin-bottom: 20px;
 }
 
-
+ul {
+    list-style: disc;
+}
 
 .logo {
     height: 150px;
@@ -89,6 +91,9 @@ header {
     text-align: justify;
 }
 
+.films {
+    display: none;
+}
 
 /* Section Vehicles */
 
@@ -102,8 +107,15 @@ header {
     text-align: center;
 }
 
-.data_base_vehicles, .data_base_films {
+.text_vehicles{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.data_base_vehicles {
     display: none;
+
 }
 
 .active{

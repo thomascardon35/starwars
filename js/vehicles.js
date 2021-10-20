@@ -54,31 +54,35 @@ const getBigData = async () => {
                     <div class="box" id="box">
                         <h2 id="${i}" class="title">${data[i].name}</h2>
                         <div class="data_base_vehicles data_base">
-                            <h3>Info</h3>
-                            <ul>
-                                <li>model:${data[i].model }</li>
-                                <li>manufacturer: ${data[i].manufacturer}</li>
-                                <li>cost in credits: ${data[i].cost_in_credits}</li>
-                                <li>length: ${data[i].length}</li>
-                                <li>max atmosphering speed: ${data[i].max_atmosphering_speed}</li>
-                                <li>crew: ${data[i].crew}</li>
-                                <li>passengers: ${data[i].passengers}</li>
-                                <li>cargo capacity ${data[i].cargo_capacity}</li>
-                                <li>consumables: ${data[i].consumables}</li>
-                                <li>vehicles class: ${data[i].vehicle_class}</li>
-                            </ul>
-                            <div class="data_second" id="data_second">
-                                <h3>Films</h3>
-                                <ul>
-                                    ${data[i].films.map(f => `<li>${f}</li>`)}
-                                </ul>
+                            <div class="text_vehicles">
+                                <div>
+                                    <h3>Info</h3>
+                                    <ul>
+                                        <li>model:${data[i].model }</li>
+                                        <li>manufacturer: ${data[i].manufacturer}</li>
+                                        <li>cost in credits: ${data[i].cost_in_credits}</li>
+                                        <li>length: ${data[i].length}</li>
+                                        <li>max atmosphering speed: ${data[i].max_atmosphering_speed}</li>
+                                        <li>crew: ${data[i].crew}</li>
+                                        <li>passengers: ${data[i].passengers}</li>
+                                        <li>cargo capacity ${data[i].cargo_capacity}</li>
+                                        <li>consumables: ${data[i].consumables}</li>
+                                        <li>vehicles class: ${data[i].vehicle_class}</li>
+                                    </ul>
+                                </div>
+                                <div class="data_second" id="data_second">
+                                    <h3>Films</h3>
+                                    <ul>
+                                        ${data[i].films.map(f => `<li>${f}</li>`)}
+                                    </ul>
+                                </div>
+                                <div class="data_three" id="data_three">
+                                    <h3>Pilots</h3>
+                                    <ul>
+                                        ${data[i].pilots.length != 0 ? data[i].pilots : 'Pas de Pilotes'}
+                                    </ul>
+                                </div> 
                             </div>
-                            <div class="data_three" id="data_three">
-                                <h3>Pilots</h3>
-                                <ul>
-                                    ${data[i].pilots.length != 0 ? data[i].pilots : 'Pas de Pilotes'}
-                                </ul>
-                            </div> 
                         </div>
                     </div>
                 `

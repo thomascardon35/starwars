@@ -149,7 +149,7 @@ function affichageNoms(tab){
         `
         <div class="box" id="box">
             <h2 class="title">${tab[indexx].name}</h2>
-            <div></div>
+            <div class="data_base"></div>
         </div>  
         `;
     }
@@ -169,7 +169,7 @@ function affichageDetails(){
                         getPromisePlanetes(allDatas[index].planete).then(respPlanete=>{
                             DIV.innerHTML = 
                             ` 
-                            <div class="data_base">
+                            <div >
                                 <ul>
                                     <li>La taille : ${allDatas[index].height}</li>
                                     <li>Le poids  : ${allDatas[index].mass}</li>
