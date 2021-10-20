@@ -121,3 +121,16 @@ ul {
 .active{
     display: block;
 }
+
+@media screen and (max-width: 720px) {
+    .top_section {
+        flex-direction: column;
+    }
+    .container {
+        width: 90%;
+    }
+
+    .text_vehicles {
+        flex-direction: column;
+    }
+}
