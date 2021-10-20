@@ -1,8 +1,23 @@
+body {
+   background: url('../assets/background.jpg');
+}
+
 header {
     text-align: center; 
     display: flex;
     justify-content: center;
-  
+    margin-bottom: 20px;
+}
+
+
+
+.logo {
+    height: 150px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
 }
 
 #section
@@ -13,7 +28,9 @@ header {
 
 }
 
-h1, h2 {color:black}
+h1 {
+    color: #fea347;
+}
 
 #box, #data_base,
 #data_second,
@@ -26,12 +43,31 @@ h1, h2 {color:black}
    
 }
 
-div img {
-	width: 200px;
-	height: 200px;
-    align-self: center;
-    border-radius: 22px;
-    margin: 10px;}
+.card_index {
+    width: 300px;
+    height: 250px;
+    border-radius: 12px;
+    background-color: #fea347;
+    margin: 20px;
+    /* padding: 10px; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card_index h2 {
+
+    height: 100%;
+    width: 100%;
+}
+
+.card_index  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 0px 0px 12px 12px;
+}
+
 
 
 /* Section Vehicles */
